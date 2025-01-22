@@ -1,8 +1,18 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
 function Navbar() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      // Redirect to the Find Places page with the search query as a parameter
+      navigate(`/places?query=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -11,16 +21,11 @@ function Navbar() {
           <li>
             <NavLink to="/" activeClassName="active" exact>Home</NavLink>
           </li>
-          {/* <li className="dropdown">
-            <span className="dropbtn">Destinations</span>
-            <div className="dropdown-content">
-              <NavLink to="/destinations/mountains">Mountains</NavLink>
-              <NavLink to="/destinations/beaches">Beaches</NavLink>
-              <NavLink to="/destinations/cities">Cities</NavLink>
-            </div>
-          </li> */}
-           <li>
+          <li>
             <NavLink to="/destinations" activeClassName="active">Destinations</NavLink>
+          </li>
+          <li>
+            <NavLink to="/places" activeClassName="active">Find Places</NavLink>
           </li>
           <li>
             <NavLink to="/tours" activeClassName="active">Tours</NavLink>
@@ -30,8 +35,13 @@ function Navbar() {
           </li>
         </ul>
         <div className="search-bar">
-          <input type="text" placeholder="Search..." />
-          <button>🔍</button>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button onClick={handleSearch}>🔍</button>
         </div>
       </div>
     </nav>
