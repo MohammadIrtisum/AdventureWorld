@@ -1,13 +1,14 @@
-/* Tours.css */
-
+/* General Tours Section Styling */
 .tours {
-  padding: 40px 20px;
-  background-color: #f9f9f9;
+  padding: 60px 20px;
   text-align: center;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
 .tours-heading {
   font-size: 2.5rem;
+  font-weight: bold;
   margin-bottom: 10px;
   color: #333;
 }
@@ -15,54 +16,115 @@
 .tours-subheading {
   font-size: 1.2rem;
   color: #666;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .tours-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .card {
-  background-color: #fff;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card h3 {
   font-size: 1.5rem;
-  color: #333;
   margin-bottom: 10px;
+  color: #ff9800;
 }
 
 .card p {
   font-size: 1rem;
-  color: #777;
+  color: #555;
   margin-bottom: 20px;
 }
 
-.btn {
+.card .btn {
   background-color: #ff9800;
-  color: #fff;
+  color: white;
   border: none;
   padding: 10px 20px;
-  font-size: 1rem;
   border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn:hover {
-  background-color: #e68900;
+.card .btn:hover {
+  background-color: #e68a00;
+  transform: scale(1.05);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .tours-heading {
+    font-size: 2rem;
+  }
+
+  .tours-subheading {
+    font-size: 1rem;
+  }
+
+  .card h3 {
+    font-size: 1.3rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+
+  .card .btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tours {
+    padding: 40px 10px;
+  }
+
+  .tours-heading {
+    font-size: 1.8rem;
+  }
+
+  .tours-subheading {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .tours-grid {
+    grid-template-columns: 1fr; /* One card per row */
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
+  }
+
+  .card .btn {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+  }
 }

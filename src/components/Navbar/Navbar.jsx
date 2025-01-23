@@ -4,34 +4,51 @@ import './Navbar.css';
 
 function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = () => {
     if (searchQuery.trim()) {
-      // Redirect to the Find Places page with the search query as a parameter
       navigate(`/places?query=${encodeURIComponent(searchQuery)}`);
     }
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <div className="logo">AdventureWorld</div>
-        <ul className="nav-links">
+        <button className="menu-toggle" onClick={toggleMenu}>
+          ☰
+        </button>
+        <ul className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
           <li>
-            <NavLink to="/" activeClassName="active" exact>Home</NavLink>
+            <NavLink to="/" activeClassName="active" exact>
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/destinations" activeClassName="active">Destinations</NavLink>
+            <NavLink to="/destinations" activeClassName="active">
+              Destinations
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/places" activeClassName="active">Find Places</NavLink>
+            <NavLink to="/places" activeClassName="active">
+              Find Places
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/tours" activeClassName="active">Tours</NavLink>
+            <NavLink to="/tours" activeClassName="active">
+              Tours
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+            <NavLink to="/contact" activeClassName="active">
+              Contact
+            </NavLink>
           </li>
         </ul>
         <div className="search-bar">
