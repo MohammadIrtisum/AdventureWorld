@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './places.css';
+import './Places.css';
 
 function Places() {
   const [query, setQuery] = useState('');
